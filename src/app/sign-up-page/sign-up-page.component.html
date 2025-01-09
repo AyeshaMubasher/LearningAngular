@@ -1,26 +1,26 @@
 <div class="container">
     <h1>User Registration</h1>
-    <form >
+    <form #userlogin="ngForm" (ngSubmit)="onSubmit()" >
       <div class="form-group">
         <label for="firstname">FirstName</label><br>
-        <input type="text" name = "firstname" class="form-control" ngModel>
+        <input type="text" name = "firstname" class="form-control" [(ngModel)]="formData.FirstName">
       </div>
       <pre></pre> 
       <div class="form-group">
         <label for="lastname">LastName</label><br>
-        <input type="text" name = "Lastname" class="form-control" ngModel>
+        <input type="text" name = "Lastname" class="form-control" [(ngModel)]="formData.LastName">
       </div>
       <pre></pre> 
       <div class="form-group">
         <label for="email">Email</label><br>
-        <input type="text" name = "email" class="form-control" ngModel>
+        <input type="text" name = "email" class="form-control" [(ngModel)]="formData.email">
       </div>
       <pre></pre> 
       <div class="form-group">
         <label for="password">Password</label><br>
-        <input type="text" name = "password" class="form-control" ngModel>
+        <input type="password" name = "password" class="form-control" [(ngModel)]="formData.password">
       </div>
       <pre></pre> 
-      <button class="btn btn-primary"  routerlink="/login" routerLinkActive="active">Submit</button>
+      <button class="btn btn-primary" typre="submit" >Submit</button>
     </form>
   </div>
