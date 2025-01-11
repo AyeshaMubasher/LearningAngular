@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -17,10 +18,18 @@ export class SignUpPageComponent  {
     email: '',
     password:''
   };
-   constructor(private router:Router,private http:HttpClient){}
+
+  signUpForm: FormGroup; 
+   constructor(private router:Router,private http:HttpClient){
+    this.signUpForm = new FormGroup({
+      firstName: new FormControl(""),
+      lastName: new FormControl(""),
+      email: new FormControl(""),
+      password: new FormControl("")
+    });
+   }
 
   onSubmit(){
-    console.log("Form submited!!");
     console.log("form data",this.formData);
     this.post();
     this.router.navigate(["\login"]);

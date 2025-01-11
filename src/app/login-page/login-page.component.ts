@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -13,22 +14,18 @@ export class LoginPageComponent  {
     password:''
   };
 
-  constructor(private router:Router, private http: HttpClient){}
+ 
+  constructor(private router:Router, private http: HttpClient){
+
+  }
 
   Login(){
-    console.log("Login Successfull!!")
     this.post();
   }
   Register(){
     this.router.navigate(["/signUp"])
   }
-/*
-  public getMethod(){
-    this.http.get('http://localhost:8000/getAll').subscribe((data)=>{
-      console.log(data);
-    });
-  }
-    */
+
   public post(){
     this.http.post('http://localhost:8000/user/check',this.formData).subscribe((data)=>
       this.router.navigate(["/home"])
