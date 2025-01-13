@@ -1,26 +1,66 @@
-<div class="container">
-    <h1>User Registration</h1>
-    <form  #userlogin="ngForm" (ngSubmit)="onSubmit()" [formGroup]="signUpForm" >
-      <div class="form-group">
-        <label for="firstname">FirstName</label><br>
-        <input type="text" name = "firstname" class="form-control" placeholder="Type First Name" [(ngModel)]="formData.FirstName">
+
+  <section class="vh-100" style="background-color: #9A616D;">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col col-xl-10">
+          <div class="card" style="border-radius: 1rem;">
+            <div class="row g-0">
+              <div class="col-md-6 col-lg-5 d-none d-md-block">
+                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/img1.webp"
+                  alt="login form" class="img-fluid" style="border-radius: 1rem 0 0 1rem;" />
+              </div>
+              <div class="col-md-6 col-lg-7 d-flex align-items-center">
+                <div class="card-body p-4 p-lg-5 text-black">
+  
+                  <form (ngSubmit)="onSubmit()" [formGroup]="signUpForm">
+  
+                    <div class="d-flex align-items-center mb-3 pb-1">
+                      <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
+                      <span class="h1 fw-bold mb-0">Register</span>
+                    </div>
+                    <div data-mdb-input-init class="form-outline mb-4">
+                      <label class="form-label" for="form2Example17">First Name*</label>
+                      <input type="text" id="form2Example17" class="form-control form-control-lg" formControlName="firstName"  />
+                      <div class="text-danger" *ngIf="signUpForm.controls['firstName'].invalid && (isFormSubmitted || signUpForm.controls['firstName'].touched || signUpForm.controls['firstName'].dirty)">
+                        <span *ngIf="signUpForm.controls['firstName'].errors?.['required']">First Name is requird</span>
+                      </div>
+                    </div>
+
+                    <div data-mdb-input-init class="form-outline mb-4">
+                      <label class="form-label" for="form2Example18">Second Name*</label>
+                      <input type="text" id="form2Example18" class="form-control form-control-lg" formControlName="lastName" />
+                      <div class="text-danger" *ngIf="signUpForm.controls['lastName'].invalid && (isFormSubmitted || signUpForm.controls['lastName'].touched || signUpForm.controls['lastName'].dirty)">
+                        <span *ngIf="signUpForm.controls['lastName'].errors?.['required']">Last Name is requird</span>
+                      </div>
+                    </div>
+
+                    <div data-mdb-input-init class="form-outline mb-4">
+                      <label class="form-label" for="form2Example19">Email address*</label>
+                      <input type="email" id="form2Example19" class="form-control form-control-lg" formControlName="email" />
+                      <div class="text-danger" *ngIf="signUpForm.controls['email'].invalid && (isFormSubmitted || signUpForm.controls['email'].touched || signUpForm.controls['email'].dirty)">
+                        <span *ngIf="signUpForm.controls['email'].errors?.['required']">Email is requird</span>
+                        <span *ngIf="signUpForm.controls['email'].errors?.['email']">Email is invalid</span>
+                      </div>
+                    </div>
+  
+                    <div data-mdb-input-init class="form-outline mb-4">
+                      <label class="form-label" for="form2Example27">Password*</label>
+                      <input type="password" id="form2Example27" class="form-control form-control-lg" formControlName="password" />
+                      <div class="text-danger" *ngIf="signUpForm.controls['password'].invalid && (isFormSubmitted || signUpForm.controls['password'].touched || signUpForm.controls['password'].dirty)">
+                        <span *ngIf="signUpForm.controls['password'].errors?.['required']">Password is requird</span>
+                      </div>
+                    </div>
+  
+                    <div class="pt-1 mb-4">
+                      <button data-mdb-button-init data-mdb-ripple-init class="btn btn-dark btn-lg btn-block" type="submit">Sign Up</button>
+                    </div>
+                  </form>
+  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <pre></pre> 
-      <div class="form-group">
-        <label for="lastname">LastName</label><br>
-        <input type="text" name = "Lastname" class="form-control" placeholder="Type Last Name" [(ngModel)]="formData.LastName">
-      </div>
-      <pre></pre> 
-      <div class="form-group">
-        <label for="email">Email</label><br>
-        <input type="text" name = "email" class="form-control" placeholder="Type email" [(ngModel)]="formData.email">
-      </div>
-      <pre></pre> 
-      <div class="form-group">
-        <label for="password">Password</label><br>
-        <input type="password" name = "password" class="form-control" placeholder="Type password" [(ngModel)]="formData.password">
-      </div>
-      <pre></pre> 
-      <button class="btn btn-primary" typre="submit" >Submit</button>
-    </form>
-  </div>
+    </div>
+  </section>
