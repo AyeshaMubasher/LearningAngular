@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login-page',
@@ -17,7 +18,7 @@ export class LoginPageComponent  {
 
   isFormSubmitted: boolean = false
   loginForm : FormGroup;
-  constructor(private router:Router, private http: HttpClient){
+  constructor(private router:Router, private http: HttpClient, private toastr: ToastrService){
     this.loginForm=new FormGroup({
       email: new FormControl("",[Validators.required,Validators.email]),
       password: new FormControl("",[Validators.required])
@@ -31,8 +32,8 @@ export class LoginPageComponent  {
     console.log("Login Form Submited");
     if(isFormValid)
       { 
-        this.router.navigate(["/home"])//remove
-            //this.post();//uncomment
+        //this.router.navigate(["/home"])//remove
+        this.post();//uncomment
       }
 
   }
@@ -42,8 +43,20 @@ export class LoginPageComponent  {
   }
 
   public post(){
-    this.http.post('http://localhost:8000/user/check',this.loginForm.value).subscribe((data)=>
+    this.http.post('http://localhost:8000/user/check',this.loginForm.value).subscribe((data)=>{
       this.router.navigate(["/home"])
-    ,(error)=>console.log("oops",error.status));
+      this.toastr.success("Successfully Login!")
+    }
+    ,(error)=>{
+      if(error.status==401){
+        this.toastr.error("Incorrect Password");
+      }
+      else if(error.status==404){
+        this.toastr.error("User not found")
+      }
+      else{
+        this.toastr.error("Internal server error please try again latter")
+      }
+    });
   }
 }

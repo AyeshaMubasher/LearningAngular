@@ -9,6 +9,8 @@ import { SignUpPageComponent } from './sign-up-page/sign-up-page.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { CommonModule } from '@angular/common';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    CommonModule
+    CommonModule,
+    ToastrModule.forRoot(),
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

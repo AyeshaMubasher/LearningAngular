@@ -20,17 +20,17 @@
                     </div>
                     <div data-mdb-input-init class="form-outline mb-4">
                       <label class="form-label" for="form2Example17">First Name*</label>
-                      <input type="text" id="form2Example17" class="form-control form-control-lg" formControlName="firstName"  />
-                      <div class="text-danger" *ngIf="signUpForm.controls['firstName'].invalid && (isFormSubmitted || signUpForm.controls['firstName'].touched || signUpForm.controls['firstName'].dirty)">
-                        <span *ngIf="signUpForm.controls['firstName'].errors?.['required']">First Name is requird</span>
+                      <input type="text" id="form2Example17" class="form-control form-control-lg" formControlName="FirstName"  />
+                      <div class="text-danger" *ngIf="signUpForm.controls['FirstName'].invalid && (isFormSubmitted || signUpForm.controls['FirstName'].touched || signUpForm.controls['FirstName'].dirty)">
+                        <span *ngIf="signUpForm.controls['FirstName'].errors?.['required']">First Name is requird</span>
                       </div>
                     </div>
 
                     <div data-mdb-input-init class="form-outline mb-4">
                       <label class="form-label" for="form2Example18">Second Name*</label>
-                      <input type="text" id="form2Example18" class="form-control form-control-lg" formControlName="lastName" />
-                      <div class="text-danger" *ngIf="signUpForm.controls['lastName'].invalid && (isFormSubmitted || signUpForm.controls['lastName'].touched || signUpForm.controls['lastName'].dirty)">
-                        <span *ngIf="signUpForm.controls['lastName'].errors?.['required']">Last Name is requird</span>
+                      <input type="text" id="form2Example18" class="form-control form-control-lg" formControlName="LastName" />
+                      <div class="text-danger" *ngIf="signUpForm.controls['LastName'].invalid && (isFormSubmitted || signUpForm.controls['LastName'].touched || signUpForm.controls['LastName'].dirty)">
+                        <span *ngIf="signUpForm.controls['LastName'].errors?.['required']">Last Name is requird</span>
                       </div>
                     </div>
 
