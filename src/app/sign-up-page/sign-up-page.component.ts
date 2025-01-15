@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import {  FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -17,7 +18,7 @@ export class SignUpPageComponent  {
 
   isFormSubmitted: boolean = false
   signUpForm: FormGroup; 
-   constructor(private router:Router,private http:HttpClient,private toastr: ToastrService){
+   constructor(private router:Router,private http:HttpClient,private toastr: ToastrService,private cookie:CookieService){
     this.signUpForm = new FormGroup({
       FirstName: new FormControl("",[Validators.required]),
       LastName: new FormControl("",[Validators.required]),
@@ -25,6 +26,12 @@ export class SignUpPageComponent  {
       password: new FormControl("",[Validators.required])
     });
    }
+
+   ngOnInit():void{
+    if(this.cookie.check("token")){
+      this.router.navigate(["/home"])
+    }
+  }
 
   onSubmit(){
     const isFormValid = this.signUpForm.valid;

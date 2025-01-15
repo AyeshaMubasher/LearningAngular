@@ -15,11 +15,17 @@ export class LoginPageComponent  {
 
   isFormSubmitted: boolean = false
   loginForm : FormGroup;
-  constructor(private router:Router, private http: HttpClient, private toastr: ToastrService,private cooke: CookieService){
+  constructor(private router:Router, private http: HttpClient, private toastr: ToastrService,private cookie: CookieService){
     this.loginForm=new FormGroup({
       email: new FormControl("",[Validators.required,Validators.email]),
       password: new FormControl("",[Validators.required])
     })
+  }
+
+  ngOnInit():void{
+    if(this.cookie.check("token")){
+      this.router.navigate(["/home"])
+    }
   }
 
   Login(){
@@ -41,7 +47,7 @@ export class LoginPageComponent  {
 
   public post(){
     this.http.post('http://localhost:8000/user/check',this.loginForm.value).subscribe((res: any)=>{
-      this.cooke.set("token",res.token)
+      this.cookie.set("token",res.token)
       console.log("token: ",res.token);
       this.toastr.success("Successfully Login!")
       this.router.navigate(["/home"])

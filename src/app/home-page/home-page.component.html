@@ -1,3 +1,46 @@
-<h1>Welcom to My App!!</h1>
 
-<button class="btn btn-primary" (click)="signOut()" >Logout</button>
+<section class="vh-100" style="background-color: #e3bec6;">
+    <!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #9A616D;">
+    <!-- Container wrapper -->
+    <div class="container" >
+      <!-- Navbar brand -->
+      <!-- Toggle button -->
+      <button
+        data-mdb-collapse-init
+        class="navbar-toggler"
+        type="button"
+        data-mdb-target="#navbarButtonsExample"
+        aria-controls="navbarButtonsExample"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <i class="fas fa-bars"></i>
+      </button>
+  
+      <!-- Collapsible wrapper -->
+      <div class="collapse navbar-collapse" id="navbarButtonsExample">
+        <!-- Left links -->
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <span class="h1 fw-bold mb-0" style="color: white;">Unlock Me</span>
+        </ul>
+        <!-- Left links -->
+  
+        <div class="d-flex align-items-center">
+          <button data-mdb-ripple-init type="button" class="btn btn-primary me-3" (click)="signOut()" >
+            LogOut
+          </button>
+        </div>
+      </div>
+      <!-- Collapsible wrapper -->
+    </div>
+    <!-- Container wrapper -->
+  </nav>
+  <!-- Navbar -->
+   <div class="w3-container">
+    <br>
+    <h1 class="h1 fw-bold mb-0">Welcome! {{FirstName}}  {{LastName}}</h1>
+    <p>We're glad to see you. Enjoy your time exploring the app!</p>
+   </div>
+  </section>
+  

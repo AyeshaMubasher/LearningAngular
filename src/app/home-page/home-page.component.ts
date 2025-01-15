@@ -11,8 +11,11 @@ import { CookieService } from 'ngx-cookie-service';
 export class HomePageComponent  {
   public tooken: any;
   
+  public FirstName: any;
+  public LastName: any;
   constructor(private router:Router,private http:HttpClient, private cookie:CookieService){}
   signOut(){
+    this.cookie.delete("token")
     this.router.navigate(["/login"]);
   }
 
@@ -23,7 +26,7 @@ export class HomePageComponent  {
   
 
   public getUserData(){
-   // localStorage.setItem("token",this.cookie.get("token"));
+    if(this.cookie.check("token")){
     this.tooken=this.cookie.get("token")
     console.log("tooken from home ",this.tooken)
     const headers = new HttpHeaders({
@@ -31,6 +34,12 @@ export class HomePageComponent  {
     })
     this.http.get("http://localhost:8000/user/getUser",{headers}).subscribe((res: any)=>{
       console.log(res)
+      this.FirstName=res.FirstName;
+      this.LastName=res.LastName;
     })
+    }
+    else{
+      this.router.navigate(["/login"]);
+    }
   }
 }
