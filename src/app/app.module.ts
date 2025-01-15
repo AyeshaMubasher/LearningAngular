@@ -7,10 +7,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { SignUpPageComponent } from './sign-up-page/sign-up-page.component';
 import { HomePageComponent } from './home-page/home-page.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ToastrModule.forRoot(),
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

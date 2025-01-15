@@ -4,6 +4,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-login-page',
@@ -11,14 +12,10 @@ import { ToastrService } from 'ngx-toastr';
   styleUrl: './login-page.component.css' 
 })
 export class LoginPageComponent  {
-  formData={
-    email: '',
-    password:''
-  };
 
   isFormSubmitted: boolean = false
   loginForm : FormGroup;
-  constructor(private router:Router, private http: HttpClient, private toastr: ToastrService){
+  constructor(private router:Router, private http: HttpClient, private toastr: ToastrService,private cooke: CookieService){
     this.loginForm=new FormGroup({
       email: new FormControl("",[Validators.required,Validators.email]),
       password: new FormControl("",[Validators.required])
@@ -43,9 +40,11 @@ export class LoginPageComponent  {
   }
 
   public post(){
-    this.http.post('http://localhost:8000/user/check',this.loginForm.value).subscribe((data)=>{
-      this.router.navigate(["/home"])
+    this.http.post('http://localhost:8000/user/check',this.loginForm.value).subscribe((res: any)=>{
+      this.cooke.set("token",res.token)
+      console.log("token: ",res.token);
       this.toastr.success("Successfully Login!")
+      this.router.navigate(["/home"])
     }
     ,(error)=>{
       if(error.status==401){
