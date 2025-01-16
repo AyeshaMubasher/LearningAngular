@@ -27,7 +27,7 @@
                     </div>
 
                     <div data-mdb-input-init class="form-outline mb-4">
-                      <label class="form-label" for="form2Example18">Second Name*</label>
+                      <label class="form-label" for="form2Example18">Last Name*</label>
                       <input type="text" id="form2Example18" class="form-control form-control-lg" formControlName="LastName" />
                       <div class="text-danger" *ngIf="signUpForm.controls['LastName'].invalid && (isFormSubmitted || signUpForm.controls['LastName'].touched || signUpForm.controls['LastName'].dirty)">
                         <span *ngIf="signUpForm.controls['LastName'].errors?.['required']">Last Name is requird</span>

@@ -19,7 +19,7 @@ export class ProfilePageComponent implements OnInit {
     FirstName: new FormControl('',[Validators.required]),
     LastName: new FormControl('',[Validators.required]),
     Address: new FormControl(''),
-    PhoneNumber: new FormControl('',[Validators.minLength(11),Validators.maxLength(11)])
+    PhoneNumber: new FormControl('',[Validators.pattern(/^\+?\d{10,15}$/)])
   });
 
    constructor(private router:Router,private http:HttpClient, private cookie:CookieService, private toastr:ToastrService){
@@ -71,6 +71,8 @@ export class ProfilePageComponent implements OnInit {
     this.http.put("http://localhost:8000/user/update",this.profileForm.value,{headers}).subscribe((res: any)=>{
       console.log(res);
       this.toastr.success("Successfully Updated!")
+    },(error)=>{
+      this.toastr.error("Internal server error")
     })
    }
 }

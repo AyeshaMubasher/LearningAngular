@@ -44,8 +44,7 @@
                                 <label class="small mb-1" for="PhoneNumber">Phone number</label>
                                 <input class="form-control" id="PhoneNumber" type="tel"  formControlName="PhoneNumber">
                                 <div class="text-danger" *ngIf="profileForm.controls['PhoneNumber'].invalid && (isFormSubmitted || profileForm.controls['PhoneNumber'].touched || profileForm.controls['PhoneNumber'].dirty)">
-                                    <span *ngIf="profileForm.controls['PhoneNumber'].errors?.['minLength']">Phone Number musht have 11 digits</span>
-                                    <span *ngIf="profileForm.controls['PhoneNumber'].errors?.['maxLength']">Phone Number musht have 11 digits</span>
+                                    <span *ngIf="profileForm.controls['PhoneNumber'].errors?.['pattern']">Invalid phone number</span>
                                 </div>
                             </div>
                         </div>
