@@ -12,13 +12,15 @@ import { CommonModule } from '@angular/common';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CookieService } from 'ngx-cookie-service';
+import { ProfilePageComponent } from './profile-page/profile-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginPageComponent,
     SignUpPageComponent,
-    HomePageComponent
+    HomePageComponent,
+    ProfilePageComponent
   ],
   imports: [
     BrowserModule,

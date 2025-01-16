@@ -49,7 +49,7 @@ export class SignUpPageComponent  {
     this.http.post('http://localhost:8000/addUser',this.signUpForm.value).subscribe((data)=>{
       console.log(data);
       this.toastr.success("Successfully Registered!")
-      //this.router.navigate(["\login"]);
+      this.router.navigate(["\login"]);
 
     },(error)=>{
       if(error.status==501){
