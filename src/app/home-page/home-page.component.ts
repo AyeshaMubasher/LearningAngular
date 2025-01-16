@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
+import { environment } from '../../environments/environment.development';
 
 @Component({
   selector: 'app-home-page',
@@ -32,7 +33,7 @@ export class HomePageComponent  {
     const headers = new HttpHeaders({
       'Authorization' : `Bearer ${this.tooken}`
     })
-    this.http.get("http://localhost:8000/user/getUser",{headers}).subscribe((res: any)=>{
+    this.http.get(environment.domin+"/user/getUser",{headers}).subscribe((res: any)=>{
       console.log(res)
       this.FirstName=res.FirstName;
       this.LastName=res.LastName;

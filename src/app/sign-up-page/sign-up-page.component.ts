@@ -5,6 +5,7 @@ import {  FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angul
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { ToastrService } from 'ngx-toastr';
+import { environment } from '../../environments/environment.development';
 
 @Component({
   selector: 'app-sign-up-page',
@@ -46,7 +47,7 @@ export class SignUpPageComponent  {
     console.log("Values: ",this.signUpForm.value);
   }
   public post(){
-    this.http.post('http://localhost:8000/addUser',this.signUpForm.value).subscribe((data)=>{
+    this.http.post(environment.domin+'/addUser',this.signUpForm.value).subscribe((data)=>{
       console.log(data);
       this.toastr.success("Successfully Registered!")
       this.router.navigate(["\login"]);

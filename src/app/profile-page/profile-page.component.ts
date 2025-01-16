@@ -4,6 +4,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { ToastrService } from 'ngx-toastr';
+import { environment } from '../../environments/environment.development';
 
 @Component({
   selector: 'app-profile-page',
@@ -43,7 +44,7 @@ export class ProfilePageComponent implements OnInit {
      const headers = new HttpHeaders({
        'Authorization' : `Bearer ${this.tooken}`
      })
-     this.http.get("http://localhost:8000/user/getUser",{headers}).subscribe((res: any)=>{
+     this.http.get(environment.domin+"/user/getUser",{headers}).subscribe((res: any)=>{
        console.log(res)
        this.profileForm.setValue({
         FirstName : res.FirstName,
@@ -68,7 +69,7 @@ export class ProfilePageComponent implements OnInit {
     const headers = new HttpHeaders({
       'Authorization' : `Bearer ${this.tooken}`
     })
-    this.http.put("http://localhost:8000/user/update",this.profileForm.value,{headers}).subscribe((res: any)=>{
+    this.http.put(environment.domin+"/user/update",this.profileForm.value,{headers}).subscribe((res: any)=>{
       console.log(res);
       this.toastr.success("Successfully Updated!")
     },(error)=>{

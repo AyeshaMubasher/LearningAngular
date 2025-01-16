@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { CookieService } from 'ngx-cookie-service';
+import { environment } from '../../environments/environment.development';
 
 @Component({
   selector: 'app-login-page',
@@ -46,7 +47,7 @@ export class LoginPageComponent  {
   }
 
   public post(){
-    this.http.post('http://localhost:8000/user/check',this.loginForm.value).subscribe((res: any)=>{
+    this.http.post(environment.domin+'/user/check',this.loginForm.value).subscribe((res: any)=>{
       this.cookie.set("token",res.token)
       console.log("token: ",res.token);
       this.toastr.success("Successfully Login!")
