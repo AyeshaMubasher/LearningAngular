@@ -23,8 +23,7 @@ export class SignUpPageComponent  {
     this.signUpForm = new FormGroup({
       FirstName: new FormControl("",[Validators.required]),
       LastName: new FormControl("",[Validators.required]),
-      email: new FormControl("",[Validators.required,Validators.email]),
-      password: new FormControl("",[Validators.required])
+      email: new FormControl("",[Validators.required,Validators.email])
     });
    }
 
